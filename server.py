@@ -1,6 +1,4 @@
-"""Simple static server: run `python3 server.py` and open http://localhost:8000
-This uses the standard library so no extra dependencies are required.
-"""
+
 import http.server
 import socketserver
 
