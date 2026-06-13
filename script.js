@@ -24,7 +24,6 @@ function animateSparkle(el){
     el.style.transform = `translateY(-${30+Math.random()*40}px) scale(${0.6+Math.random()}) rotate(${Math.random()*60-30}deg)`;
     el.style.opacity = 0;
   }, 80 + Math.random()*600);
-  // recycle
   setTimeout(()=>{
     sparkles.removeChild(el);
     animateSparkle(document.createElement('div'));
@@ -62,14 +61,12 @@ function drawHeartPartByPart(){
 function easeOutCubic(t){ return 1 - Math.pow(1-t,3); }
 
 function onCompleteDraw(){
-  // fill and glow
   path.style.fill = 'rgba(255,77,136,0.95)';
   path.classList.add('glow');
-  // subtle throb
   path.animate([
     {transform:'scale(1)'},{transform:'scale(1.03)'},{transform:'scale(1)'}
   ],{duration:900,iterations:3,easing:'ease-in-out'});
-  startTyping('I love you baby');
+  startTyping('');
 }
 
 function startTyping(text, delay=80){
@@ -80,7 +77,6 @@ function startTyping(text, delay=80){
       typedEl.textContent += text[i++];
       setTimeout(step, delay + Math.random()*60);
     } else {
-      // add small heartbeat on complete
       typedEl.animate([{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],{duration:900,iterations:2});
     }
   }
@@ -88,9 +84,7 @@ function startTyping(text, delay=80){
 }
 
 window.addEventListener('load', ()=>{
-  // Prepare sparkles
   createSparkles(10);
-  // Ensure path length is measured after render
   setTimeout(()=>{
     drawHeartPartByPart();
   },150);
