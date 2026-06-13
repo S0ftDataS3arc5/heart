@@ -1,0 +1,54 @@
+:root{
+  --bg1:#0f0221;
+  --bg2:#2b0038;
+  --accent:#ff4d88;
+  --accent-2:#ff6aa3;
+  --card:#0f0b12a6;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: radial-gradient(ellipse at top left,var(--bg2),var(--bg1));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.stage{padding:24px}
+.card{
+  width:min(600px,92vw);
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.04);
+  border-radius:20px;
+  padding:32px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  text-align:center;
+}
+.svg-wrap{position:relative;height:360px;display:flex;align-items:center;justify-content:center}
+#heartSVG{width:260px;height:260px;overflow:visible}
+#heartPath{
+  fill:transparent;
+  stroke:var(--accent);
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  transition:fill 800ms ease, filter 600ms ease;
+}
+.glow{
+  filter:drop-shadow(0 0 8px rgba(255,77,136,0.8)) drop-shadow(0 0 18px rgba(255,106,163,0.55));
+  animation: pulse 1.8s infinite ease-in-out;
+}
+@keyframes pulse{50%{transform:scale(1.02);filter:drop-shadow(0 0 14px rgba(255,77,136,0.95))}}
+.message{margin-top:12px}
+#typedText{font-size:28px;font-weight:700;color:var(--accent-2);letter-spacing:0.5px}
+
+/* small floating hearts */
+#sparkles{position:absolute;inset:0;pointer-events:none}
+.sparkle{
+  position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);
+  transform:translate(-50%,-50%);opacity:0.9;mix-blend-mode:screen;
+}
+
+@media (max-width:420px){#heartSVG{width:200px;height:200px}#typedText{font-size:20px}}
